@@ -106,4 +106,20 @@ public class ApiManager {
                 });
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
+
+    public void createEvent(Context context, JSONObject params){
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.POST, API_URL+"events", params, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        System.out.println("sucess");
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("error");
+                    }
+                });
+        Volley.newRequestQueue(context).add(jsObjRequest);
+    }
 }

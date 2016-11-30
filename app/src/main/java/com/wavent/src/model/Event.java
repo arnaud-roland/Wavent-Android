@@ -24,6 +24,13 @@ public class Event implements Serializable {
     public Event() {
     }
 
+    public Event(String name, String subject, String imageUrl, String creator) {
+        this.name = name;
+        this.subject = subject;
+        this.imageUrl = imageUrl;
+        this.creator = creator;
+    }
+
     public String getName() {
         return name;
     }

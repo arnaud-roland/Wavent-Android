@@ -14,4 +14,8 @@
     <string name="action_linear">Vue simple</string>
     <string name="action_grid">Vue grille</string>
 
+    <string name="label_name_event">Nom de l\'évenement</string>
+    <string name="label_subject_event">Déscritpion de l\'évenement</string>
+
+
 </resources>
