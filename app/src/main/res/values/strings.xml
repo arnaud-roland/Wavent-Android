@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Wavent</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="activity_name_login">Authentification</string>
+    <string name="button_text_login">S\'Authentifier</string>
+
+    <string name="api_login_param_user">mail</string>
+    <string name="api_login_param_pwd">password</string>
+
+
+    <string name="action_linear">Vue simple</string>
+    <string name="action_grid">Vue grille</string>
+
+</resources>
