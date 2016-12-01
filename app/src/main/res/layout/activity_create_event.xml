@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText"
         android:paddingTop="20dp"
+        android:singleLine="true"
         android:hint="@string/label_name_event"
         android:layout_gravity="center_horizontal" />
 
@@ -29,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editText2"
+        android:singleLine="true"
         android:hint="@string/label_subject_event"
         android:layout_gravity="center_horizontal" />
 
@@ -36,6 +38,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Créer"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
         android:id="@+id/button2"
         android:layout_gravity="center_horizontal"
         android:onClick="createEvent"/>

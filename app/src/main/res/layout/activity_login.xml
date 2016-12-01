@@ -46,6 +46,8 @@
         android:layout_height="wrap_content"
         android:text="@string/button_text_login"
         android:id="@+id/button"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
         android:layout_gravity="center_horizontal"
         android:onClick="authenticate"/>
     />

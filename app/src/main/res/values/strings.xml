@@ -5,6 +5,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="activity_name_login">Authentification</string>
+    <string name="activity_name_create_event">Créer un évenement</string>
+    <string name="activity_name_list_event">Evenements à proximité</string>
+
+
     <string name="button_text_login">S\'Authentifier</string>
 
     <string name="api_login_param_user">mail</string>
