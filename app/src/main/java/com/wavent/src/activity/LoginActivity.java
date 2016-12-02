@@ -6,9 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.wavent.R;
 import com.wavent.src.manager.ApiManager;
 import com.wavent.src.model.Session;
@@ -52,12 +55,18 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         ApiManager.getInstance().authenticateUser(LoginActivity.this, jsonParams, new ApiManager.OnAuthCallBack(){
+
             @Override
-            public void onSucess(User userAutowired) {
-                    pb.setVisibility(ProgressBar.INVISIBLE);
-                    Session.getInstance(userAutowired);
-                    Intent intent = new Intent(LoginActivity.this, ListEventActivity.class);
-                    startActivity(intent);
+            public void onSucess(JSONObject jsonUser) {
+
+                GsonBuilder builder = new GsonBuilder();
+                Gson gson = builder.create();
+                User userAutowired = gson.fromJson(jsonUser.toString(),User.class);
+
+                pb.setVisibility(ProgressBar.INVISIBLE);
+                Session.getInstance(userAutowired);
+                Intent intent = new Intent(LoginActivity.this, ListEventActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -67,5 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                 toast.show();
             }
         });
+    }
+
+    public void setRegistration(View view){
+        Intent intentReg = new Intent(LoginActivity.this, RegistrationActivity.class);
+        startActivity(intentReg);
     }
 }

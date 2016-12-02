@@ -1,12 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.wavent.src.activity.RegistrationActivity">
+    >
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.wavent.src.activity.CreateEventActivity">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/imageViewProfile"
+            android:background="@drawable/icon_profile_unknow"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextPrenom"
+            android:paddingTop="20dp"
+            android:singleLine="true"
+            android:hint="@string/label_firstname_user"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextNom"
+            android:singleLine="true"
+            android:hint="@string/label_lastname_user"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextMail"
+            android:singleLine="true"
+            android:hint="@string/label_mail_user"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextPassword"
+            android:singleLine="true"
+            android:hint="@string/label_pwd_user"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="S\'enregistrer"
+            android:textColor="#fff"
+            android:background="@color/colorPrimary"
+            android:id="@+id/buttonRegistration"
+            android:layout_gravity="center_horizontal"
+            android:onClick="saveUser"/>
+    </LinearLayout>
+</ScrollView>
+

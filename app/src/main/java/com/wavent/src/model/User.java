@@ -1,16 +1,30 @@
 package com.wavent.src.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by arnau on 31/10/2016.
  */
 public class User {
 
     private String id;
+
+    @SerializedName("mail")
     private String mail;
+
+    @SerializedName("password")
     private String password;
+
+    @SerializedName("prenom")
     private String prenom;
+
+    @SerializedName("nom")
     private String nom;
+
+    @SerializedName("profilePicture")
     private String profilePicture;
+
+    @SerializedName("age")
     private int age;
 
     public User(String mail, String password) {

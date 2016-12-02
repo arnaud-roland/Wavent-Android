@@ -4,6 +4,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- Activity Names -->
+
     <string name="activity_name_login">Authentification</string>
     <string name="activity_name_create_event">Créer un évenement</string>
     <string name="activity_name_list_event">Evenements à proximité</string>
@@ -11,15 +13,41 @@
 
     <string name="button_text_login">S\'Authentifier</string>
 
+    <!-- API params keys -->
     <string name="api_login_param_user">mail</string>
     <string name="api_login_param_pwd">password</string>
 
-
+    <!-- Menu contextuel -->
     <string name="action_linear">Vue simple</string>
     <string name="action_grid">Vue grille</string>
 
+    <!-- Label Names Create Event -->
     <string name="label_name_event">Nom de l\'évenement</string>
     <string name="label_subject_event">Déscritpion de l\'évenement</string>
+
+    <!-- Label Names Create User -->
+    <string name="label_firstname_user">Prénom</string>
+    <string name="label_lastname_user">Nom</string>
+    <string name="label_mail_user">Mail</string>
+    <string name="label_pwd_user">Password</string>
+    <string name="label_birthD_user">Date de naissance</string>
+
+    <string name="label_registration">Vous n\'avez pas de compte ? Inscrivez-vous !</string>
+
+    <!-- Form error registration -->
+    <string name="error_title_registration">Mauvaise saisie</string>
+
+    <string name="error_firstName_null">Veuillez saisir un prénom</string>
+    <string name="error_firstName_inf">Veuillez saisir un prénom avec au moin 3 caractères</string>
+
+    <string name="error_LastName_null">Veuillez saisir un nom</string>
+    <string name="error_LastName_inf">Veuillez saisir un nom avec au moin 3 caractères</string>
+
+    <string name="error_mail_null">Veuillez saisir une adresse mail</string>
+    <string name="error_mail_inf">Veuillez saisir un adresse mail avec au moin 3 caractères</string>
+
+    <string name="error_pwd_null">Veuillez saisir un mot de passe</string>
+    <string name="error_pwd_inf">Veuillez saisir un mot de passe avec au moin 6 caractères</string>
 
 
 </resources>

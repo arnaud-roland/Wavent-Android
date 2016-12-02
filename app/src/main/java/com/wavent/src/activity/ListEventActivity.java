@@ -74,7 +74,7 @@ public class ListEventActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //Récupèration des évenements de l'utilisateur
-        ApiManager.getInstance().getEventByUser(ListEventActivity.this, new ApiManager.OnEventsReceived() {
+        ApiManager.getInstance().getEvent(ListEventActivity.this, new ApiManager.OnEventsReceived() {
             @Override
             public void onSucess(JSONArray newEvents) {
                 GsonBuilder builder = new GsonBuilder();
