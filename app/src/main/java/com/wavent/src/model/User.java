@@ -1,11 +1,14 @@
 package com.wavent.src.model;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by arnau on 31/10/2016.
  */
-public class User {
+public class User extends BaseObservable{
 
     private String id;
 
@@ -57,6 +60,7 @@ public class User {
         this.id = id;
     }
 
+    @Bindable
     public String getMail() {
         return mail;
     }
@@ -73,6 +77,7 @@ public class User {
         this.password = password;
     }
 
+    @Bindable
     public String getPrenom() {
         return prenom;
     }
@@ -81,6 +86,7 @@ public class User {
         this.prenom = prenom;
     }
 
+    @Bindable
     public String getNom() {
         return nom;
     }

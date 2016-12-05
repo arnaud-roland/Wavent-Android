@@ -1,9 +1,10 @@
 package com.wavent.src.activity;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,9 +23,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.wavent.R;
+import com.wavent.databinding.ActivityListBinding;
+import com.wavent.databinding.NavHeaderMainBinding;
 import com.wavent.src.adapter.RecyclerAdapter;
+import com.wavent.src.listener.OnClickReceiverListener;
 import com.wavent.src.manager.ApiManager;
 import com.wavent.src.model.Event;
+import com.wavent.src.model.Session;
 
 import org.json.JSONArray;
 
@@ -42,8 +47,11 @@ public class ListEventActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityListBinding binding =  DataBindingUtil.setContentView(this, R.layout.activity_list);
 
+        NavHeaderMainBinding _bind = DataBindingUtil.inflate(getLayoutInflater(), R.layout.nav_header_main, binding.navView, false);
+        binding.navView.addHeaderView(_bind.getRoot());
+        _bind.setUser(Session.getInstance(null).getUserConnected());
 
         //Set up du recycler view
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -51,6 +59,15 @@ public class ListEventActivity extends AppCompatActivity
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerAdapter = new RecyclerAdapter(this.recyclerView, currentEvents);
         recyclerView.setAdapter(recyclerAdapter);
+
+        recyclerAdapter.setOnClickReceiverListener(new OnClickReceiverListener() {
+            @Override
+            public void onItemClicked(Event event) {
+                Intent intent = new Intent(ListEventActivity.this, DetailActivity.class);
+                intent.putExtra("myEvent", (Parcelable) event);
+                startActivity(intent);
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,9 +86,6 @@ public class ListEventActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         //Récupèration des évenements de l'utilisateur
         ApiManager.getInstance().getEvent(ListEventActivity.this, new ApiManager.OnEventsReceived() {

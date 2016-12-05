@@ -31,8 +31,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText lastName;
     private EditText mail;
     private EditText pwd;
-    private Button button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +42,6 @@ public class RegistrationActivity extends AppCompatActivity {
         lastName = (EditText) findViewById(R.id.editTextNom);
         mail = (EditText) findViewById(R.id.editTextMail);
         pwd = (EditText) findViewById(R.id.editTextPassword);
-        button = (Button) findViewById(R.id.buttonRegistration);
-
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                saveUser(v);
-//            }
-//        });
     }
 
     public void saveUser(View v){
