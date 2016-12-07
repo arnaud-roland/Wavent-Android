@@ -68,7 +68,7 @@ public class ListEventActivity extends AppCompatActivity
         recyclerAdapter.setOnClickReceiverListener(new OnClickReceiverListener() {
             @Override
             public void onItemClicked(Event event) {
-                Intent intent = new Intent(ListEventActivity.this, DetailActivity.class);
+                Intent intent = new Intent(ListEventActivity.this, EventActivity.class);
                 intent.putExtra("myEvent", (Parcelable) event);
                 startActivity(intent);
             }

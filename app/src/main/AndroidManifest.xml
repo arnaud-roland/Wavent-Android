@@ -26,8 +26,11 @@
         <activity android:name=".src.activity.RegistrationActivity" />
         <activity
             android:name=".src.activity.CreateEventActivity"
-            android:label="@string/activity_name_create_event"></activity>
-        <activity android:name=".src.activity.DetailActivity"></activity>
+            android:label="@string/activity_name_create_event" />
+        <activity
+            android:name=".src.activity.EventActivity"
+            android:label="@string/title_activity_event"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -48,6 +48,10 @@
 
     <string name="error_pwd_null">Veuillez saisir un mot de passe</string>
     <string name="error_pwd_inf">Veuillez saisir un mot de passe avec au moin 6 caractères</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_event">EventActivity</string>
 
 
 </resources>
