@@ -129,6 +129,12 @@ public class ApiManager {
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 
+
+    /**
+     * Récupère tous les évenements
+     * @param context
+     * @param callback
+     */
     public void getEvent(Context context, final OnEventsReceived callback){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(API_URL+"events",
                 new Response.Listener<JSONArray>(){
@@ -146,6 +152,11 @@ public class ApiManager {
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 
+    /**
+     * Permet de créer un évenement
+     * @param context
+     * @param params
+     */
     public void createEvent(Context context, JSONObject params){
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.POST, API_URL+"events", params, new Response.Listener<JSONObject>() {
@@ -161,4 +172,21 @@ public class ApiManager {
                 });
         Volley.newRequestQueue(context).add(jsObjRequest);
     }
+
+    public void joinEvent(Context context, String idEvent, JSONObject params){
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.POST, API_URL+"events/addParticipantTo/"+idEvent, params, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        System.out.println("sucess");
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("error");
+                    }
+                });
+        Volley.newRequestQueue(context).add(jsObjRequest);
+    }
+
 }

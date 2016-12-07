@@ -24,6 +24,10 @@
     <!-- Label Names Create Event -->
     <string name="label_name_event">Nom de l\'évenement</string>
     <string name="label_subject_event">Déscritpion de l\'évenement</string>
+    <string name="label_address_event">Lieu de l\'évenement</string>
+    <string name="label_nbPartMax_event">Nombre de participant max</string>
+    <string name="label_date_event">Date de l\'évenement</string>
+
 
     <!-- Label Names Create User -->
     <string name="label_firstname_user">Prénom</string>
@@ -50,8 +54,7 @@
     <string name="error_pwd_inf">Veuillez saisir un mot de passe avec au moin 6 caractères</string>
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_event">EventActivity</string>
+    <string name="title_activity_event">Détail de l\'évenement</string>
 
 
 </resources>

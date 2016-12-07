@@ -1,59 +1,104 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="event" type="com.wavent.src.model.Event"/>
     </data>
 
-    <LinearLayout
-        android:orientation="vertical"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:id="@+id/imageView2"
+                android:background="@drawable/parisguidetower"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:paddingTop="24dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:fontFamily="sans-serif"
+                android:textColor="#333"
+                android:textSize="24sp"
+                android:singleLine="true"
+                android:text="@{event.name}"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/textDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="3dp"
+                android:background="?android:selectableItemBackground"
+                android:fontFamily="sans-serif"
+                android:textColor="#616161"
+                android:textSize="16sp"
+                android:text="Mar 24 Dec 2016"
+                android:singleLine="true"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="13dp"
+                android:paddingRight="16dp"
+                android:paddingTop="16dp"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/map_marker"/>
+
+                <TextView
+                    android:id="@+id/textAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:background="?android:selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:textColor="#616161"
+                    android:textSize="18sp"
+                    android:text="@{event.address}"
+                    android:singleLine="true"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:paddingTop="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:fontFamily="sans-serif"
+                android:textColor="#333"
+                android:textSize="16sp"
+                android:text="@{event.subject}" />
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:id="@+id/imageView2"
-            android:background="@drawable/parisguidetower"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:paddingTop="24dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:fontFamily="sans-serif"
-            android:textColor="#333"
-            android:textSize="24sp"
-            android:singleLine="true"
-            android:text="@{event.name}"
-            android:ellipsize="end"/>
-
-        <TextView
-            android:id="@+id/textDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="3dp"
-            android:background="?android:selectableItemBackground"
-            android:fontFamily="sans-serif"
-            android:textColor="#616161"
-            android:textSize="16sp"
-            android:text="Mar 24 Dec 2016"
-            android:singleLine="true"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:paddingTop="24dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:fontFamily="sans-serif"
-            android:textColor="#333"
-            android:textSize="16sp"
-            android:text="@{event.subject}" />
-
-    </LinearLayout>
+            android:layout_margin="16dp"
+            android:tint="@android:color/white"
+            android:src="@android:drawable/ic_input_add"
+            android:clickable="true"
+            app:layout_anchor="@id/imageView2"
+            app:layout_anchorGravity="bottom|right|end"/>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

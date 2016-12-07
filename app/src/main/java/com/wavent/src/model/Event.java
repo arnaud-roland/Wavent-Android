@@ -18,6 +18,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Event extends BaseObservable implements Serializable, Parcelable {
 
+    @SerializedName("id")
+    private String id;
+
     @SerializedName("name")
     private String name;
 
@@ -53,8 +56,10 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
     }
 
     protected Event(Parcel in){
+        id = in.readString();
         name = in.readString();
         subject = in.readString();
+        address = in.readString();
         imageUrl = in.readString();
         creator = in.readString();
     }
@@ -70,6 +75,15 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
             return new Event[size];
         }
     };
+
+    @Bindable
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     @Bindable
     public String getName() {
@@ -149,8 +163,10 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
         dest.writeString(name);
         dest.writeString(subject);
+        dest.writeString(address);
         dest.writeString(imageUrl);
         dest.writeString(creator);
     }

@@ -34,6 +34,32 @@
         android:hint="@string/label_subject_event"
         android:layout_gravity="center_horizontal" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextAdress"
+        android:singleLine="true"
+        android:hint="@string/label_address_event"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/editTextDate"
+        android:singleLine="true"
+        android:hint="@string/label_date_event"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/editTextNbPartMax"
+        android:singleLine="true"
+        android:hint="@string/label_nbPartMax_event"
+        android:layout_gravity="center_horizontal" />
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

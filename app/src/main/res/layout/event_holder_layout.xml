@@ -19,7 +19,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
             android:orientation="vertical">
 
             <ProgressBar
@@ -32,7 +31,7 @@
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="180dp"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/parisguidetower" />
 
@@ -43,12 +42,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:paddingTop="24dp"
+            android:paddingTop="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:fontFamily="sans-serif"
             android:textColor="#333"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:singleLine="true"
             android:text="Evenement 1"
             android:ellipsize="end"/>
@@ -70,7 +69,10 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 

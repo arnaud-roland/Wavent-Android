@@ -16,6 +16,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.wavent.R;
 import com.wavent.src.listener.OnClickReceiverListener;
+import com.wavent.src.manager.ApiManager;
 import com.wavent.src.model.Event;
 
 import java.text.DateFormat;
@@ -54,6 +55,9 @@ public class EventViewHolder extends RecyclerView.ViewHolder{
 
         nameEventTV.setText(event.getName());
         subjectEventTV.setText(event.getSubject());
+
+        event.setImageUrl("https://source.unsplash.com/random");
+
         if(event.getDate()!=null){
             SimpleDateFormat formater = null;
             formater = new SimpleDateFormat("EEEE d MMM yyyy");

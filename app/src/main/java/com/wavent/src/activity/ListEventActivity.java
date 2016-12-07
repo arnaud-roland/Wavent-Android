@@ -146,7 +146,6 @@ public class ListEventActivity extends AppCompatActivity
         } else if (id == R.id.action_linear){
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
-
         return super.onOptionsItemSelected(item);
     }
 
