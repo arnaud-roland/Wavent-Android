@@ -7,17 +7,19 @@
     android:layout_margin="5dp"
 
     app:cardBackgroundColor="@android:color/white"
-    app:cardCornerRadius="2dp"
+    app:cardCornerRadius="4dp"
     app:cardElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
             android:orientation="vertical">
 
             <ProgressBar
@@ -41,23 +43,76 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:paddingTop="20dp"
-            android:paddingLeft="20dp"
-            android:paddingBottom="2dp"
+            android:paddingTop="24dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:fontFamily="sans-serif"
             android:textColor="#333"
-            android:textSize="18sp" />
+            android:textSize="24sp"
+            android:singleLine="true"
+            android:text="Evenement 1"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="3dp"
+            android:background="?android:selectableItemBackground"
+            android:fontFamily="sans-serif"
+            android:textColor="#616161"
+            android:textSize="16sp"
+            android:text="Mar 24 Dec 2016"
+            android:singleLine="true"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:layout_marginRight="8dp"
+                android:text="DETAIL"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                android:text="REJOINDRE" />
+
+                <ImageButton
+                    android:id="@+id/expandableButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_marginLeft="100dp"
+                    android:src="@drawable/ic_keyboard_arrow_down_white_24dp" />
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textSubject"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"
             android:background="?android:selectableItemBackground"
             android:fontFamily="sans-serif"
             android:textColor="#616161"
             android:textSize="16sp" />
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

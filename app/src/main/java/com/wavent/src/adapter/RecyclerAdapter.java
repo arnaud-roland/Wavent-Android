@@ -2,6 +2,7 @@ package com.wavent.src.adapter;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private int visibleThreshold = 5;
     private int lastVisibleItem, totalItemCount;
     private int current_page = 1;
+
+    private int mExpandedPosition = -1;
 
     List<Event> list;
 
@@ -76,6 +79,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        final boolean isExpanded = position==mExpandedPosition;
         if (holder instanceof RecyclerView.ViewHolder) {
             Event event = list.get(position);
             EventViewHolder myViewHolder = (EventViewHolder) holder;

@@ -6,6 +6,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -21,11 +24,23 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
     @SerializedName("subject")
     private String subject;
 
+    @SerializedName("address")
+    private String address;
+
+    @SerializedName("date")
+    private Date date;
+
     @SerializedName("pictureEvent")
     private String imageUrl;
 
     @SerializedName("creator")
     private String creator;
+
+    @SerializedName("participants")
+    private List<User> participants = new ArrayList<User>();
+
+    @SerializedName("nbParticipantsMax")
+    private int nbParticipantsMax;
 
     public Event() {
     }
@@ -90,6 +105,41 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
 
     public void setCreator(String creator) {
         this.creator = creator;
+    }
+
+    @Bindable
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Bindable
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public List<User> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<User> participants) {
+        this.participants = participants;
+    }
+
+    @Bindable
+    public int getNbParticipantsMax() {
+        return nbParticipantsMax;
+    }
+
+    public void setNbParticipantsMax(int nbParticipantsMax) {
+        this.nbParticipantsMax = nbParticipantsMax;
     }
 
     @Override

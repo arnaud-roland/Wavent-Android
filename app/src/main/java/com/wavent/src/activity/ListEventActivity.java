@@ -21,6 +21,10 @@ import android.view.MenuItem;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import com.wavent.R;
 import com.wavent.databinding.ActivityListBinding;
@@ -35,6 +39,7 @@ import org.json.JSONArray;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ListEventActivity extends AppCompatActivity
@@ -92,6 +97,11 @@ public class ListEventActivity extends AppCompatActivity
             @Override
             public void onSucess(JSONArray newEvents) {
                 GsonBuilder builder = new GsonBuilder();
+                builder.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
+                    public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                        return new Date(json.getAsJsonPrimitive().getAsLong());
+                    }
+                });
                 final Gson gson = builder.create();
                 List<Event> events = new ArrayList<Event>();
                 Type listType = new TypeToken<ArrayList<Event>>(){ }.getType();
@@ -103,7 +113,7 @@ public class ListEventActivity extends AppCompatActivity
 
             @Override
             public void onError(VolleyError error) {
-
+                System.out.println("false");
             }
         });
     }
