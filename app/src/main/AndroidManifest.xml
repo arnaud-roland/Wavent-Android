@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".src.activity.ListEventActivity"
+            android:name=".src.activity.DrawerActivity"
             android:label="@string/activity_name_list_event"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".src.activity.RegistrationActivity" />

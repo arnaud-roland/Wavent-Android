@@ -3,21 +3,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_list_events"
             android:icon="@drawable/ic_menu_camera"
             android:title="Liste des évenements" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_my_events"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Evenements en cour" />
+        <item
+            android:id="@+id/nav_past_events"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Evenemtens terminés" />
+        <item
+            android:id="@+id/nav_create_event"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Créer un évenements" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Evenemtens passés" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Evenements créés" />
     </group>
 
     <item android:title="Profile">

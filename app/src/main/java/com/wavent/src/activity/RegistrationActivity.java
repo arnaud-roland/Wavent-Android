@@ -6,10 +6,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -17,7 +15,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.wavent.R;
 import com.wavent.src.manager.ApiManager;
-import com.wavent.src.model.Event;
 import com.wavent.src.model.Session;
 import com.wavent.src.model.User;
 
@@ -80,7 +77,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     User userAutowired = gson.fromJson(jsonUser.toString(),User.class);
 
                     Session.getInstance(userAutowired);
-                    Intent intent = new Intent(RegistrationActivity.this, ListEventActivity.class);
+                    Intent intent = new Intent(RegistrationActivity.this, DrawerActivity.class);
                     startActivity(intent);
                 }
 

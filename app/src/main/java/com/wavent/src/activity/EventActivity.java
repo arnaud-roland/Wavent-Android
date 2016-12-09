@@ -42,7 +42,7 @@ public class EventActivity extends AppCompatActivity {
 
         detailEvent = (Event) getIntent().getParcelableExtra("myEvent");
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.

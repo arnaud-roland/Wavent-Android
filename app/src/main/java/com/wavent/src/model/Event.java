@@ -45,6 +45,10 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
     @SerializedName("nbParticipantsMax")
     private int nbParticipantsMax;
 
+    @SerializedName("finished")
+    private boolean isFinished;
+
+
     public Event() {
     }
 
@@ -154,6 +158,15 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
 
     public void setNbParticipantsMax(int nbParticipantsMax) {
         this.nbParticipantsMax = nbParticipantsMax;
+    }
+
+    @Bindable
+    public boolean isFinished() {
+        return isFinished;
+    }
+
+    public void setFinished(boolean finished) {
+        isFinished = finished;
     }
 
     @Override

@@ -9,6 +9,10 @@ import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.wavent.R;
 import com.wavent.src.manager.ApiManager;
 import com.wavent.src.model.Event;
@@ -17,6 +21,7 @@ import com.wavent.src.model.Session;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.Date;
 
 public class CreateEventActivity extends AppCompatActivity {
@@ -54,9 +59,15 @@ public class CreateEventActivity extends AppCompatActivity {
         }else{
             Event newEvent = new Event(name,subject,"picture.jpeg", Session.getInstance(null).getUserConnected().getId());
             newEvent.setAddress(address);
-            //newEvent.setDate(date);
+            newEvent.setDate(date);
             newEvent.setNbParticipantsMax(nbParticipantMax);
             GsonBuilder builder = new GsonBuilder();
+            builder.registerTypeAdapter(Date.class, new JsonSerializer<Date>() {
+                @Override
+                public JsonElement serialize(Date src, Type typeOfSrc, JsonSerializationContext context) {
+                    return new JsonPrimitive(src.getTime());
+                }
+            });
             Gson gson = builder.create();
             gson.toJson(newEvent,Event.class);
             String jsonString = gson.toJson(newEvent,Event.class);
@@ -68,7 +79,7 @@ public class CreateEventActivity extends AppCompatActivity {
             }
             if(params != null){
                 ApiManager.getInstance().createEvent(CreateEventActivity.this,params);
-                Intent intent = new Intent(CreateEventActivity.this,ListEventActivity.class);
+                Intent intent = new Intent(CreateEventActivity.this,DrawerActivity.class);
                 startActivity(intent);
             }
 

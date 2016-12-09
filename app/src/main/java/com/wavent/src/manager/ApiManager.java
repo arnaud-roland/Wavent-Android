@@ -1,9 +1,6 @@
 package com.wavent.src.manager;
 
 import android.content.Context;
-import android.content.Intent;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -11,15 +8,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.wavent.src.activity.ListEventActivity;
-import com.wavent.src.activity.LoginActivity;
 import com.wavent.src.model.Session;
-import com.wavent.src.model.User;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -113,7 +104,7 @@ public class ApiManager {
     public void getEventByUser(Context context, final OnEventsReceived callback){
         String idUser = Session.getInstance(null).getUserConnected().getId();
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(API_URL+"events/user/"+idUser,
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(API_URL+"events/participant/"+idUser,
                 new Response.Listener<JSONArray>(){
                     @Override
                     public void onResponse(JSONArray response) {
@@ -173,6 +164,12 @@ public class ApiManager {
         Volley.newRequestQueue(context).add(jsObjRequest);
     }
 
+    /**
+     * Permet de rejoindre un évenement
+     * @param context
+     * @param idEvent l'id de l'evenement a rejoindre
+     * @param params le User sous forme de JsonObject à ajouter
+     */
     public void joinEvent(Context context, String idEvent, JSONObject params){
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.POST, API_URL+"events/addParticipantTo/"+idEvent, params, new Response.Listener<JSONObject>() {
