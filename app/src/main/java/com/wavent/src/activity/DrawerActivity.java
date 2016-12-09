@@ -13,7 +13,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.wavent.R;
@@ -52,15 +51,6 @@ public class DrawerActivity extends AppCompatActivity {
 
         _bind.setUser(Session.getInstance(null).getUserConnected());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DrawerActivity.this, CreateEventActivity.class);
-                startActivity(intent);
-            }
-        });
-
         Class fragmentClass = ListAllEventFragment.class;
         launchFragment(fragmentClass,null);
     }
@@ -80,8 +70,7 @@ public class DrawerActivity extends AppCompatActivity {
         if (id == R.id.nav_list_events) {
             fragmentClass = ListAllEventFragment.class;
         } else if (id == R.id.nav_create_event) {
-            Intent intent = new Intent(DrawerActivity.this, CreateEventActivity.class);
-            startActivity(intent);
+            fragmentClass = CreateEventFragment.class;
         } else if (id == R.id.nav_past_events) {
             fragmentClass = ListMyEventFragment.class;
             param = true;
