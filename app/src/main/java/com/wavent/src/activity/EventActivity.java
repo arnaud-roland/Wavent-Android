@@ -54,9 +54,10 @@ public class EventActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
+
+
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -99,11 +100,15 @@ public class EventActivity extends AppCompatActivity {
                     fragmentInfo.setArguments(args);
                     return fragmentInfo;
                 case 1:
+                    EventParticipantFragment fragmentParticipants =  new EventParticipantFragment();
+                    Bundle args2 = new Bundle();
+                    args2.putParcelable("event",detailEvent);
+                    fragmentParticipants.setArguments(args2);
+                    return fragmentParticipants;
+
+                case 2:
                     EventMessageFragment fragmentMessage =  new EventMessageFragment();
                     return fragmentMessage;
-                case 2:
-                    EventPhotoFragment fragmentPhoto =  new EventPhotoFragment();
-                    return fragmentPhoto;
                 default:
                     return null;
             }
@@ -121,9 +126,9 @@ public class EventActivity extends AppCompatActivity {
                 case 0:
                     return "INFOS";
                 case 1:
-                    return "MESSAGES";
+                    return "PARTICIPANTS";
                 case 2:
-                    return "PHOTOS";
+                    return "MESSAGES";
             }
             return null;
         }

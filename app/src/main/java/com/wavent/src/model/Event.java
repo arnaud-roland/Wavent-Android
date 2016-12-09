@@ -66,6 +66,7 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
         address = in.readString();
         imageUrl = in.readString();
         creator = in.readString();
+        participants = in.readArrayList(User.class.getClassLoader());
     }
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
@@ -182,5 +183,11 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
         dest.writeString(address);
         dest.writeString(imageUrl);
         dest.writeString(creator);
+        dest.writeList(participants);
+
+    }
+
+    public void addParticipant(User user){
+        participants.add(user);
     }
 }

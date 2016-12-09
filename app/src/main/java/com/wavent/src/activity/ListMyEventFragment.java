@@ -76,12 +76,6 @@ public class ListMyEventFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-//        if(areFinished){
-//            getActivity().setTitle("Evenements terminés");
-//        } else {
-//            getActivity().setTitle("Evenements en cours");
-//        }
         //Set up du recycler view
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerView);
@@ -97,7 +91,42 @@ public class ListMyEventFragment extends Fragment {
                 startActivity(intent);
             }
         });
+       getEvents();
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        currentEvents.clear();
+        recyclerAdapter.notifyDataSetChanged();
+        recyclerAdapter.setLoaded();
+        getEvents();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        inflater.inflate(R.menu.main, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_grid) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        } else if (id == R.id.action_linear){
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void getEvents(){
         //Récupèration des évenements de l'utilisateur
         ApiManager.getInstance().getEventByUser(getContext(), new ApiManager.OnEventsReceived() {
             @Override
@@ -113,7 +142,7 @@ public class ListMyEventFragment extends Fragment {
                 Type listType = new TypeToken<ArrayList<Event>>(){ }.getType();
                 events = gson.fromJson(newEvents.toString(),listType);
 
-                //TODO do filter with Stream or RetroLambda
+                //FIXME do filter with Stream or RetroLambda
                 List<Event> eventsFinished = new ArrayList<Event>();
                 List<Event> eventsEncour = new ArrayList<Event>();
 
@@ -138,29 +167,6 @@ public class ListMyEventFragment extends Fragment {
                 System.out.println("false");
             }
         });
-
-    }
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        inflater.inflate(R.menu.main, menu);
-        super.onCreateOptionsMenu(menu,inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_grid) {
-            recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        } else if (id == R.id.action_linear){
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 

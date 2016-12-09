@@ -2,13 +2,15 @@ package com.wavent.src.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by arnau on 31/10/2016.
  */
-public class User extends BaseObservable{
+public class User extends BaseObservable implements Parcelable{
 
     private String id;
 
@@ -51,6 +53,29 @@ public class User extends BaseObservable{
         this.profilePicture = user.getProfilePicture();
         this.age = user.getAge();
     }
+
+    protected User(Parcel in){
+        id = in.readString();
+        prenom = in.readString();
+        nom = in.readString();
+        mail = in.readString();
+        profilePicture = in.readString();
+        age = in.readInt();
+
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
 
     public String getId() {
         return id;
@@ -109,5 +134,20 @@ public class User extends BaseObservable{
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(prenom);
+        dest.writeString(nom);
+        dest.writeString(mail);
+        dest.writeString(profilePicture);
+        dest.writeInt(age);
     }
 }

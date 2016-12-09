@@ -48,6 +48,7 @@ public class EventInfoFragment extends Fragment {
                     e.printStackTrace();
                 }
                 ApiManager.getInstance().joinEvent(v.getContext(),detailEvent.getId(),params);
+                detailEvent.addParticipant(user);
 
             }
         });
