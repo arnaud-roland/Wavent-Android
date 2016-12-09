@@ -73,8 +73,8 @@ public class DrawerActivity extends AppCompatActivity {
         } else if (id == R.id.nav_my_events) {
            fragmentClass = ListMyEventFragment.class;
             param = false;
-        } else if (id == R.id.nav_share) {
-            //agmentClass = FragmentOne.class;
+        } else if (id == R.id.nav_profile) {
+            fragmentClass = UserFragment.class;
         } else if (id == R.id.nav_send) {
             //agmentClass = FragmentTwo.class;
         }

@@ -23,7 +23,7 @@
     <item android:title="Profile">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_profile"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Mes informations" />
             <item

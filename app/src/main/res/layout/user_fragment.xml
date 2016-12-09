@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="user" type="com.wavent.src.model.User"/>
+    </data>
+    <FrameLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".src.activity.DrawerActivity"
+        tools:showIn="@layout/app_bar_main">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal|right">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/profile"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="12dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="2dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/grey_icon"
+                        android:textStyle="bold"
+                        android:paddingTop="@dimen/nav_header_vertical_spacing"
+                        android:text="@{user.prenom}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true"
+                        android:textColor="@color/grey_icon"
+                        android:textStyle="bold"
+                        android:paddingTop="@dimen/nav_header_vertical_spacing"
+                        android:text="@{user.nom}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  Ajouter"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:drawableLeft="@drawable/account_plus"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="12dp"
+                    android:text="Description de l\'utilisateur si il veut quelques mots sur lui."
+                    android:background="?android:selectableItemBackground"
+                    android:fontFamily="sans-serif"
+                    android:textColor="#616161"
+                    android:layout_gravity="center_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  13"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey_icon"
+                    android:drawableTop="@drawable/trophy"
+                    android:layout_gravity="center_horizontal"
+                    style="?android:attr/borderlessButtonStyle"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  14"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey_icon"
+                    android:drawableTop="@drawable/calendar_check"
+                    android:layout_gravity="center_horizontal"
+                    style="?android:attr/borderlessButtonStyle" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  121"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey_icon"
+                    android:drawableTop="@drawable/account_multiple"
+                    android:layout_gravity="center_horizontal"
+                    style="?android:attr/borderlessButtonStyle" />
+
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical"
+                    android:background="@color/grey">
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout >
+</layout>

@@ -26,12 +26,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".src.activity.RegistrationActivity" />
         <activity
-            android:name=".src.activity.CreateEventFragment"
-            android:label="@string/activity_name_create_event" />
-        <activity
             android:name=".src.activity.EventActivity"
             android:label="@string/title_activity_event"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
