@@ -150,4 +150,37 @@ public class User extends BaseObservable implements Parcelable{
         dest.writeString(profilePicture);
         dest.writeInt(age);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (getAge() != user.getAge()) return false;
+        if (getId() != null ? !getId().equals(user.getId()) : user.getId() != null) return false;
+        if (getMail() != null ? !getMail().equals(user.getMail()) : user.getMail() != null)
+            return false;
+        if (getPassword() != null ? !getPassword().equals(user.getPassword()) : user.getPassword() != null)
+            return false;
+        if (getPrenom() != null ? !getPrenom().equals(user.getPrenom()) : user.getPrenom() != null)
+            return false;
+        if (getNom() != null ? !getNom().equals(user.getNom()) : user.getNom() != null)
+            return false;
+        return getProfilePicture() != null ? getProfilePicture().equals(user.getProfilePicture()) : user.getProfilePicture() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getMail() != null ? getMail().hashCode() : 0);
+        result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
+        result = 31 * result + (getPrenom() != null ? getPrenom().hashCode() : 0);
+        result = 31 * result + (getNom() != null ? getNom().hashCode() : 0);
+        result = 31 * result + (getProfilePicture() != null ? getProfilePicture().hashCode() : 0);
+        result = 31 * result + getAge();
+        return result;
+    }
 }

@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
@@ -42,6 +43,7 @@ public class ListMyEventFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerAdapter recyclerAdapter;
+    private ProgressBar pbListeDesEvents;
     private List<Event> currentEvents = new ArrayList<>();
 
     private static final String ARE_FINISHED = "eventsFinished";
@@ -78,6 +80,7 @@ public class ListMyEventFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         //Set up du recycler view
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        pbListeDesEvents = (ProgressBar) getActivity().findViewById(R.id.pbListeDesEvents);
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerAdapter = new RecyclerAdapter(this.recyclerView, currentEvents);
@@ -97,6 +100,12 @@ public class ListMyEventFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        if(areFinished){
+            getActivity().setTitle("Evenements terminés");
+        }else {
+            getActivity().setTitle("Mes évenements terminés");
+        }
+        getActivity().setTitle("Mes évenements");
         currentEvents.clear();
         recyclerAdapter.notifyDataSetChanged();
         recyclerAdapter.setLoaded();
@@ -160,6 +169,7 @@ public class ListMyEventFragment extends Fragment {
                 }
                 recyclerAdapter.notifyDataSetChanged();
                 recyclerAdapter.setLoaded();
+                pbListeDesEvents.setVisibility(View.GONE);
             }
 
             @Override

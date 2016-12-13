@@ -76,7 +76,7 @@ public class DrawerActivity extends AppCompatActivity {
         } else if (id == R.id.nav_profile) {
             fragmentClass = UserFragment.class;
         } else if (id == R.id.nav_send) {
-            //agmentClass = FragmentTwo.class;
+            fragmentClass = SettingFragment.class;
         }
         launchFragment(fragmentClass, param);
     }

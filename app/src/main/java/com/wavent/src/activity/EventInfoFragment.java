@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,10 +29,15 @@ import org.json.JSONObject;
  */
 public class EventInfoFragment extends Fragment {
 
+    private Event currentEvent;
+    private TextView participe;
+    private FloatingActionButton fab;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentEventInfoBinding binding = DataBindingUtil.inflate(inflater,R.layout.fragment_event_info,container,false);
         final Event detailEvent = getArguments().getParcelable("event");
+        currentEvent = getArguments().getParcelable("event");
         binding.setEvent(detailEvent);
 
         //Permet de participer à un évenement
@@ -64,5 +72,21 @@ public class EventInfoFragment extends Fragment {
             }
         });
         return binding.getRoot();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+        fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        participe = (TextView) getActivity().findViewById(R.id.tvParticipe);
+
+
+        if(currentEvent.getParticipants().contains(Session.getInstance(null).getUserConnected())){
+            participe.setVisibility(View.VISIBLE);
+            fab.setImageResource(R.drawable.check);
+        } else {
+            participe.setVisibility(View.GONE);
+        }
     }
 }

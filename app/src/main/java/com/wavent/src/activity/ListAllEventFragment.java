@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
@@ -42,6 +43,7 @@ public class ListAllEventFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerAdapter recyclerAdapter;
+    private ProgressBar pbListeDesEvents;
     private List<Event> currentEvents = new ArrayList<>();
 
     public ListAllEventFragment() {
@@ -68,10 +70,9 @@ public class ListAllEventFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        getActivity().setTitle("Evenements à proximités");
-
         //Set up du recycler view
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        pbListeDesEvents = (ProgressBar) getActivity().findViewById(R.id.pbListeDesEvents);
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerAdapter = new RecyclerAdapter(this.recyclerView, currentEvents);
@@ -91,6 +92,7 @@ public class ListAllEventFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getActivity().setTitle("Evenements à proximité");
         currentEvents.clear();
         recyclerAdapter.notifyDataSetChanged();
         recyclerAdapter.setLoaded();
@@ -138,6 +140,7 @@ public class ListAllEventFragment extends Fragment {
                 currentEvents.addAll(events);
                 recyclerAdapter.notifyDataSetChanged();
                 recyclerAdapter.setLoaded();
+                pbListeDesEvents.setVisibility(View.GONE);
             }
 
             @Override
