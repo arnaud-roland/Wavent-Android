@@ -86,7 +86,6 @@ public class ListAllEventFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        getEvents();
     }
 
     @Override
