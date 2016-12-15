@@ -48,6 +48,8 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
     @SerializedName("finished")
     private boolean isFinished;
 
+    @SerializedName("messages")
+    private List<Message> messages = new ArrayList<Message>();
 
     public Event() {
     }
@@ -67,6 +69,7 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
         imageUrl = in.readString();
         creator = in.readString();
         participants = in.readArrayList(User.class.getClassLoader());
+        messages = in.readArrayList(Message.class.getClassLoader());
     }
 
     public static final Creator<Event> CREATOR = new Creator<Event>() {
@@ -152,6 +155,14 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
         this.participants = participants;
     }
 
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
     @Bindable
     public int getNbParticipantsMax() {
         return nbParticipantsMax;
@@ -184,10 +195,15 @@ public class Event extends BaseObservable implements Serializable, Parcelable {
         dest.writeString(imageUrl);
         dest.writeString(creator);
         dest.writeList(participants);
+        dest.writeList(messages);
 
     }
 
     public void addParticipant(User user){
         participants.add(user);
+    }
+
+    public void addMessage(Message message){
+        messages.add(message);
     }
 }

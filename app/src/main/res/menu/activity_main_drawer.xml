@@ -9,15 +9,15 @@
         <item
             android:id="@+id/nav_my_events"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Evenements en cour" />
+            android:title="Evenements en cours" />
         <item
             android:id="@+id/nav_past_events"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Evenemtens terminés" />
+            android:title="Evenements terminés" />
         <item
             android:id="@+id/nav_create_event"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Créer un évenements" />
+            android:title="Créer un évenement" />
     </group>
 
     <item android:title="Profile">

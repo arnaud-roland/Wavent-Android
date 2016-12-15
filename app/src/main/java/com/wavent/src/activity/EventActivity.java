@@ -108,6 +108,9 @@ public class EventActivity extends AppCompatActivity {
 
                 case 2:
                     EventMessageFragment fragmentMessage =  new EventMessageFragment();
+                    Bundle args3 = new Bundle();
+                    args3.putParcelable("event",detailEvent);
+                    fragmentMessage.setArguments(args3);
                     return fragmentMessage;
                 default:
                     return null;
