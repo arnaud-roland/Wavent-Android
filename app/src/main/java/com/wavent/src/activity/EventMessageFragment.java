@@ -16,6 +16,7 @@ import com.wavent.src.model.Message;
 import com.wavent.src.model.User;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by arnau on 07/12/2016.
@@ -42,6 +43,12 @@ public class EventMessageFragment extends Fragment {
         if(detailEvent.getMessages() != null){
             listMessage.addAll(detailEvent.getMessages());
         }
+        //FIXME
+        Message data = new Message();
+        data.setDate(new Date());
+        data.setIdUser("583db6212cd774690f6e426c");
+        data.setMessage("Moi je ramène du pinot noir, bsx.");
+        listMessage.add(data);
         adapter = new ListMessageAdapter(getActivity(),listMessage);
         listView.setAdapter(adapter);
     }

@@ -13,9 +13,10 @@ import android.widget.TextView;
 
 import com.wavent.R;
 import com.wavent.src.model.Message;
-import com.wavent.src.model.User;
+import com.wavent.src.model.Session;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by arnaud on 22/01/16.
@@ -36,7 +37,13 @@ public class ListMessageAdapter extends ArrayAdapter<Message> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate( R.layout.row_message, parent, false);
+
+        View rowView = null;
+        if(itemsArrayList.get(position).getIdUser().equals(Session.getInstance(null).getUserConnected().getId())){
+             rowView = inflater.inflate( R.layout.row_message_left, parent, false);
+        } else {
+             rowView = inflater.inflate( R.layout.row_message_right, parent, false);
+        }
 
         ImageView profilePicture = (ImageView) rowView.findViewById(R.id.UserListImage);
         TextView messageText = (TextView) rowView.findViewById(R.id.messageTextView);
