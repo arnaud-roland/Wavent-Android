@@ -23,6 +23,7 @@
         android:id="@+id/linearLayout">
 
         <EditText
+            android:id="@+id/textBox"
             android:paddingLeft="10dp"
             android:layout_width="300dp"
             android:layout_height="match_parent"
@@ -31,6 +32,7 @@
             android:textColor="#000"/>
 
         <Button
+            android:id="@+id/sendMessageButton"
             android:layout_marginLeft="8dp"
             android:layout_width="36dp"
             android:layout_height="36dp"

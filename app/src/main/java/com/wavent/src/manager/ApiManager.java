@@ -18,7 +18,7 @@ import org.json.JSONObject;
  */
 public class ApiManager {
 
-    private static String API_URL = "http://54.244.143.188:8080/";
+    private static String API_URL = "http://54.244.143.188:8080/api/";
 
     private static ApiManager ourInstance = new ApiManager();
 
@@ -173,6 +173,28 @@ public class ApiManager {
     public void joinEvent(Context context, String idEvent, JSONObject params){
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.POST, API_URL+"events/addParticipantTo/"+idEvent, params, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        System.out.println("sucess");
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("error");
+                    }
+                });
+        Volley.newRequestQueue(context).add(jsObjRequest);
+    }
+
+    /**
+     * Permet  d'envoyer un message associé à un évenement
+     * @param context
+     * @param idEvent
+     * @param params
+     */
+    public void sendMessage(Context context, String idEvent, JSONObject params){
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.POST, API_URL+"events/addMessageTo/"+idEvent, params, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         System.out.println("sucess");

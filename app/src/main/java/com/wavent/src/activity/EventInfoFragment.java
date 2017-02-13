@@ -10,8 +10,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.wavent.R;
@@ -32,6 +38,8 @@ public class EventInfoFragment extends Fragment {
     private Event currentEvent;
     private TextView participe;
     private FloatingActionButton fab;
+    private ImageView eventPicture;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,7 +88,8 @@ public class EventInfoFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         participe = (TextView) getActivity().findViewById(R.id.tvParticipe);
-
+        eventPicture = (ImageView) getActivity().findViewById(R.id.imageViewEventInfo);
+        progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBar4);
 
         if(currentEvent.getParticipants().contains(Session.getInstance(null).getUserConnected())){
             participe.setVisibility(View.VISIBLE);
@@ -88,5 +97,21 @@ public class EventInfoFragment extends Fragment {
         } else {
             participe.setVisibility(View.GONE);
         }
+
+        Glide.with(getActivity())
+                .load(currentEvent.getImageUrl())
+                .listener(new RequestListener<String, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        progressBar.setVisibility(View.GONE);
+                        return false;
+                    }
+                })
+                .into(eventPicture);
     }
 }

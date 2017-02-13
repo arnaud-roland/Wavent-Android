@@ -56,8 +56,6 @@ public class EventViewHolder extends RecyclerView.ViewHolder{
         nameEventTV.setText(event.getName());
         subjectEventTV.setText(event.getSubject());
 
-        event.setImageUrl("https://source.unsplash.com/random");
-
         if(event.getDate()!=null){
             SimpleDateFormat formater = null;
             formater = new SimpleDateFormat("EEEE d MMM yyyy");
